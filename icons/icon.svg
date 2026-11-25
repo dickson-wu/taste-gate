@@ -1,0 +1,18 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><defs>
+<radialGradient id="m1" cx="85%" cy="8%" r="60%"><stop offset="0" stop-color="#04330f"/><stop offset="1" stop-color="#04330f" stop-opacity="0"/></radialGradient>
+<radialGradient id="m2" cx="15%" cy="90%" r="65%"><stop offset="0" stop-color="#b8dc4e"/><stop offset="1" stop-color="#b8dc4e" stop-opacity="0"/></radialGradient>
+<radialGradient id="m3" cx="80%" cy="70%" r="55%"><stop offset="0" stop-color="#5fb04a"/><stop offset="1" stop-color="#5fb04a" stop-opacity="0"/></radialGradient>
+<linearGradient id="base" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d6128"/><stop offset=".55" stop-color="#2f9437"/><stop offset="1" stop-color="#8cc443"/></linearGradient>
+<linearGradient id="shine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#fff" stop-opacity=".15"/><stop offset=".7" stop-color="#fff" stop-opacity=".05"/><stop offset="1" stop-color="#e2ff6e" stop-opacity=".95"/></linearGradient>
+<linearGradient id="glassW" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#eaf7dc" stop-opacity=".82"/></linearGradient>
+<radialGradient id="lime" cx="35%" cy="25%" r="80%"><stop offset="0" stop-color="#fbffd8"/><stop offset=".45" stop-color="#dcf56a"/><stop offset="1" stop-color="#9fd12d"/></radialGradient>
+<filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#032b0c" flood-opacity=".35"/></filter>
+</defs>
+<rect x="8" y="8" width="496" height="496" rx="112" fill="url(#base)"/>
+<rect x="8" y="8" width="496" height="496" rx="112" fill="url(#m1)"/><rect x="8" y="8" width="496" height="496" rx="112" fill="url(#m2)"/><rect x="8" y="8" width="496" height="496" rx="112" fill="url(#m3)"/>
+<rect x="8" y="8" width="496" height="248" rx="112" fill="url(#shine)"/>
+<rect x="10" y="10" width="492" height="492" rx="110" fill="none" stroke="url(#rim)" stroke-width="5"/><g filter="url(#sh)"><rect x="112" y="96" width="248" height="300" rx="44" fill="url(#glassW)"/>
+<circle cx="180" cy="176" r="26" fill="#9fd12d"/><path d="M136 346 L214 252 L262 306 L292 272 L338 346 Z" fill="#2f9437"/></g>
+<g filter="url(#sh)"><circle cx="352" cy="352" r="86" fill="url(#lime)" stroke="#fff" stroke-width="10"/>
+<path d="M310 354 L340 384 L396 324" fill="none" stroke="#0d4a1c" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
