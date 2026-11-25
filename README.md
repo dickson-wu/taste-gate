@@ -8,7 +8,7 @@ Stop judging hundreds of Pinterest images by "I feel" and "I think". Write your 
 
 You skip the red ones and pick references from what's left, so finding references for AI image generation takes minutes instead of half an hour of scrolling and decision fatigue.
 
-Taste Gate isn't one-size-fits-all. It starts with a simple starting taste, and **you make it yours with an AI chat** (Claude, ChatGPT or similar): the AI interviews you, writes your taste, and later improves it from the pins you voted on.
+Taste Gate isn't one-size-fits-all. You don't have to describe your taste either: **you show it**. Vote keep or flag on pins for about 20 minutes, export your votes, and an AI chat (Claude, ChatGPT or similar) studies them, asks you a few questions, and writes your taste as rules for Taste Gate.
 
 It looks at images with **Jev by TypeSafe**, using **your own Jev key**. Checking 1,000 images costs about **7–8 US cents**.
 
@@ -17,14 +17,13 @@ It looks at images with **Jev by TypeSafe**, using **your own Jev key**. Checkin
 ## Contents
 
 1. [Install (5 minutes)](#1-install-5-minutes)
-2. [Set up your taste with AI](#2-set-up-your-taste-with-ai)
-3. [Use it on Pinterest](#3-use-it-on-pinterest)
-4. [Make it smarter: improve your taste from your votes](#4-make-it-smarter-improve-your-taste-from-your-votes)
-5. [Quick changes](#5-quick-changes)
-6. [Check it's safe before you install](#6-check-its-safe-before-you-install)
-7. [Something not working?](#7-something-not-working)
-8. [Costs and privacy](#8-costs-and-privacy)
-9. [Update or remove](#9-update-or-remove)
+2. [Use it on Pinterest](#2-use-it-on-pinterest)
+3. [Teach it your taste: vote, then let AI learn from your votes](#3-teach-it-your-taste-vote-then-let-ai-learn-from-your-votes)
+4. [Quick changes](#4-quick-changes)
+5. [Check it's safe before you install](#5-check-its-safe-before-you-install)
+6. [Something not working?](#6-something-not-working)
+7. [Costs and privacy](#7-costs-and-privacy)
+8. [Update or remove](#8-update-or-remove)
 
 ---
 
@@ -65,96 +64,61 @@ Chrome may show a "Disable developer mode extensions" message when it starts. Th
 
 ---
 
-## 2. Set up your taste with AI
+## 2. Use it on Pinterest
 
-Taste Gate comes with a simple **starting taste**: avoid studio shots, avoid illustrations and 3D renders, avoid websites and design layouts, and a product must be in the shot. You can see it in **Settings, Step 2**. To make it fit *your* brand:
-
-1. In **Settings, Step 2**, press **Copy my taste**.
-2. Open a capable AI chat. **Claude (Opus or Sonnet)** or **ChatGPT** work well; you don't need the most expensive models.
-3. Paste the prompt below, and paste your taste where it says.
-4. Answer the AI's questions. It helps a lot to share 3–5 images you love and 3–5 you'd never use (screenshots or links), if your AI can look at images.
-5. The AI gives you a new taste block. In **Settings, Step 2**, press **Paste new taste from AI**, paste it and press **Use this taste**.
-
-### Setup prompt
-
-```text
-Help me set up "Taste Gate", a Chrome extension that checks Pinterest images against my taste
-while I search for references (for photoshoots, mood boards and AI image generation).
-
-Interview me first. Ask ONE question at a time and wait for my answer. Cover:
-1. What brand or project this is for, and what the images will be used for.
-2. What a perfect reference image looks like for me (setting, light, people, product, mood).
-3. What I never want to see (and why), even if it looks nice.
-4. Whether a product must be in the picture, and what counts as my product.
-5. Whether studio shots, illustrations/3D renders, website or design layouts, or food are OK.
-6. How strict it should be: would I rather see a few bad images, or miss a few good ones?
-If I share example images, describe what they have in common before going on.
-Then summarise my taste in 5 bullet points and ask me to confirm.
-
-After I confirm, write my taste as ONE JSON block in exactly this format:
-{
-  "taste_gate_settings": 1,
-  "checks": {
-    "studio": true,      // flag people posing on a plain studio backdrop or built studio set (product photography is always allowed)
-    "product": true,     // flag images with no product in them (clothes, bags, accessories don't count as products)
-    "photo": true,       // flag illustrations, cartoons and 3D renders of shops/rooms (posters built on a real photo are fine)
-    "design": true,      // flag websites, shop pages, newsletters, app screens, slides, colour palettes
-    "foodDrink": false   // flag in-your-face food shots, and food shown without a drink
-  },
-  "rules": [
-    { "kind": "avoid", "text": "neon lighting" },
-    { "kind": "need", "text": "warm, natural daylight" }
-  ],
-  "flagAt": 0.6, "unsureAt": 0.35,
-  "productShotMin": 0.45, "designSure": 0.7, "notPhotoSure": 0.95
-}
-Rules for writing it:
-- "rules": at most 8. "avoid" = flag images that show this. "need" = flag images that don't match this.
-  Each rule short (2-8 words) and about ONE thing you can SEE in the picture, not a feeling.
-  Don't repeat what a check already covers.
-- Strictness: relaxed = flagAt 0.7 / unsureAt 0.45, balanced = 0.6 / 0.35, strict = 0.5 / 0.25.
-- Leave productShotMin, designSure and notPhotoSure as they are unless I ask.
-- No comments in the final block. Give me only the block after a one-line summary.
-
-My current taste:
-<PASTE YOUR TASTE HERE>
-```
-
----
-
-## 3. Use it on Pinterest
+Taste Gate works straight away with a basic **starting taste**: avoid studio shots, a product must be in the shot, avoid illustrations and 3D renders, avoid websites and design layouts. Section 3 turns it into *your* taste.
 
 1. Search Pinterest as usual. Each pin gets a coloured edge as it's checked (the bar at the bottom shows progress).
-2. **Hover a pin** to see why it got its colour.
+2. **Hover a pin** to see why it got its colour, plus two buttons: **Should keep** and **Should flag**.
 3. Use the **bar at the bottom** to filter: click **Green** to see only pins that fit; click **Green** and **Orange** to see both. Other pins are covered with a glass card showing their colour and reason, with a **Show** button. **All** shows everything again.
 4. **Open a pin** and Taste Gate looks for other photos **from the same shoot** (same person, outfit, set or branding). They get a green edge, move to the top of the grid below the pin and appear in a **From this shoot** row next to it. Your taste doesn't apply to these: if you liked the pin, you'll want the rest of the shoot.
-5. When Taste Gate gets one wrong, hover the pin and press **Should keep** or **Should flag**. These votes are how you teach it your taste (next section).
 
 The popup's **Checked pins** button shows every pin it has checked, with filters, your votes, and how often it agrees with you.
 
 ---
 
-## 4. Make it smarter: improve your taste from your votes
+## 3. Teach it your taste: vote, then let AI learn from your votes
 
-About 20 minutes of voting is usually enough for a big improvement.
+You don't need to know how to describe your taste. Most people can't; they just know it when they see it. So you **show** it instead: vote on pins, and an AI chat works out the rules from your votes.
 
-1. **Vote.** While you browse, press **Should keep** or **Should flag** on pins it got wrong. Aim for 30 or more. Votes on pins it got right help too.
-2. **Export.** In the popup or **Settings, Step 3**, press **Export votes**. You get a spreadsheet (CSV) of your votes, with Jev's score for every check on every pin.
-3. **Copy your taste.** **Settings, Step 2**, **Copy my taste**.
-4. **Ask an AI.** Attach the CSV to a chat with Claude or ChatGPT and paste the prompt below, with your taste where it says.
-5. **Paste the new taste back** (**Settings, Step 2**, **Paste new taste from AI**). Pins you've already checked are re-scored straight away, for free, and **Checked pins** shows the new agreement.
+### Step 1: Vote (about 20 minutes)
 
-Repeat whenever it drifts from your taste.
+Browse Pinterest for the kind of images you need. Hover pins and press:
 
-### Improve prompt (the AI interviews you about your votes)
+- **Should keep** on any pin you'd actually use as a reference
+- **Should flag** on any pin you wouldn't use
+
+Vote on pins of **every colour**, not just the ones it got wrong: the green ones you love, the green ones you'd never use, the red ones it was right about. Don't overthink it: go with your gut. Aim for **40 or more votes**, with a good mix of keeps and flags.
+
+### Step 2: Export your votes and copy your taste
+
+- In the popup or **Settings, Step 3**, press **Export votes**. You get a spreadsheet (CSV): every pin with your vote, what Taste Gate decided, Jev's score for each check, and a link to the image.
+- In **Settings, Step 2**, press **Copy my taste**.
+
+### Step 3: Let AI study your votes
+
+Open a capable AI chat: **Claude (Opus or Sonnet)** or **ChatGPT** work well; you don't need the most expensive models. Attach the CSV, paste the prompt below, and paste your taste where it says.
+
+The AI looks at what your kept pins have in common and what your flagged pins have in common, asks you a few short questions about what it found, and writes your taste as rules.
+
+### Step 4: Paste the new taste back
+
+In **Settings, Step 2**, press **Paste new taste from AI**, paste the block and press **Use this taste**. Pins you've already checked are re-scored straight away, for free, and **Checked pins** shows how often it now agrees with you.
+
+**Repeat** whenever you notice it getting things wrong: vote on a few more pins, export, and run the prompt again. Each round gets closer to your taste.
+
+### Learn-my-taste prompt
 
 ```text
-You are helping me improve "Taste Gate", a Chrome extension that flags Pinterest images against my taste.
+You are helping me teach "Taste Gate", a Chrome extension that checks Pinterest images against my taste.
+I can't fully describe my taste, so I showed it instead: I voted on pins. Your job is to work out my taste
+from my votes, check it with me, and write it as rules the extension can use.
+
 Attached is a CSV of pins it checked. Columns:
-- verdict: what it decided (keep = green, unsure = orange, flag = red), and reason.
-- your vote: my correction. "keep" = should be green, "flag" = should be red. Empty = I didn't vote.
+- your vote: "keep" = I'd use this as a reference. "flag" = I wouldn't. Empty = I didn't vote.
+- verdict and reason: what Taste Gate decided with my current taste (keep = green, unsure = orange, flag = red).
 - "score: ..." columns: Jev's probability (0 to 1) for each check. Higher = more likely true.
-- pin and image: links to the pin and its picture (open the image links if you can see images).
+- pin and image: links to the pin and its picture.
 
 How Taste Gate decides:
 1. My own "rules" come first. "avoid" rule: its "shows" score is the chance the image breaks it.
@@ -166,18 +130,25 @@ How Taste Gate decides:
    food checks if foodDrink is on), the highest score >= flagAt -> red, >= unsureAt -> orange, else green.
 
 Do this in order:
-1. Count how many of my votes my current taste already agrees with (my "flag" = red,
-   my "keep" = green or orange), and list the pins where we disagree.
-2. Group the disagreements into patterns (for example "flags images that are actually outdoors",
-   "keeps images with no product"). For each pattern, show 2-3 example pin links.
-3. Interview me: ask ONE question at a time about each pattern, to find what I really mean
-   (what exactly makes these good or bad for me?). Wait for my answers. Max 6 questions.
-4. Propose the smallest changes that agree with more of my votes: switch checks on/off,
-   add/remove/reword my rules (max 8, short, about something visible), or change strictness.
-   Don't make it stricter overall than my votes ask for: compare the red count before and after.
-   New or reworded rules mean pins get checked again for them (it costs a little).
-5. Show: agreement before -> after, red count before -> after, and each change in one plain line.
-6. Then give me the complete new taste as ONE JSON block in exactly the same format as my current
+1. LOOK at the pictures. Open the image links of my voted pins (as many as you can, keeps and flags).
+   If you can't open image links, say so and ask me to upload screenshots of about 10 kept and
+   10 flagged pins instead. Don't guess my taste from the scores alone.
+2. Describe what my KEPT pins have in common and what my FLAGGED pins have in common: setting, light,
+   colours, people, product, composition, mood, style. Point out where I'm consistent and where I'm not.
+3. Count how many of my votes my current taste already agrees with (my "flag" = red,
+   my "keep" = green or orange), and list where it disagrees with me.
+4. Interview me: ask ONE short question at a time about the patterns you found, to check what really
+   makes a picture good or bad for me (for example "You flagged these 4 outdoor shots. Was it the harsh
+   light, or that there's no product?"). Show 2-3 pin links as examples with each question.
+   Wait for my answer each time. Max 6 questions.
+5. Write my taste: switch the ready-made checks on/off, write my own rules (max 8; each short, 2-8 words,
+   about ONE thing you can SEE in a picture, not a feeling), and pick the strictness.
+   "avoid" = flag pictures that show this. "need" = flag pictures that don't match this.
+   Strictness: relaxed = flagAt 0.7 / unsureAt 0.45, balanced = 0.6 / 0.35, strict = 0.5 / 0.25.
+   Don't make it stricter than my votes ask for.
+6. Show me: my taste in 5 plain bullet points, agreement before -> your estimate after, and each change
+   in one line. Note that new rules mean pins get checked again for them (it costs a little).
+7. Then give me the complete new taste as ONE JSON block in exactly the same format as my current
    taste (no comments), ready to paste into Taste Gate.
 
 My current taste:
@@ -186,14 +157,13 @@ My current taste:
 
 ---
 
-## 5. Quick changes
+## 4. Quick changes
 
-You don't always need a full interview. Copy your taste, paste it into an AI chat with one of these, and paste the answer back:
+Already know something you want changed? Copy your taste, paste it into an AI chat with one of these, and paste the answer back:
 
 - *"Here's my Taste Gate taste. Add an **avoid** rule for **neon lighting**, and give me the full block back."*
 - *"Add a **need** rule: **a person in the shot**. Full block back, please."*
 - *"Too many good pins are going red. Make it more **relaxed**. Full block back."*
-- *"It keeps flagging outdoor shots with plain skies as studio. What should I change? Give me the full block back."*
 - *"Switch off the **product** check: I'm collecting mood images, not product shots. Full block back."*
 
 Tips for rules that work:
@@ -204,7 +174,7 @@ Tips for rules that work:
 
 ---
 
-## 6. Check it's safe before you install
+## 5. Check it's safe before you install
 
 You're installing code from the internet, so it's worth a check. The whole extension is a few small files you can read.
 
@@ -228,7 +198,7 @@ or obfuscated. Give me a short plain-English verdict and list anything I should 
 
 ---
 
-## 7. Something not working?
+## 6. Something not working?
 
 | What you see | What to do |
 |---|---|
@@ -239,7 +209,7 @@ or obfuscated. Give me a short plain-English verdict and list anything I should 
 | Bar says **Jev error: try again soon** | TypeSafe had a problem or you hit a limit. Wait a minute and refresh. |
 | A pin never gets a colour, or hover says **Image unavailable** | Pinterest didn't give the image (videos and some ads). Nothing to fix. |
 | **Paste new taste** says the block isn't valid | Copy the AI's whole block again, from the first `{` to the last `}`. Ask the AI to "give the block again with no comments". |
-| Too much red, or not enough | Vote on the wrong ones and use the improve prompt (section 4), or a quick change (section 5). |
+| Too much red, or not enough | Vote on more pins and run the learn-my-taste prompt again (section 3), or use a quick change (section 4). |
 | No **From this shoot** row on a pin | It only appears on a pin's own page, after the pins below it load. Scroll down a little. |
 | **Load unpacked** says "Manifest file is missing" | You picked the outer folder. Pick the folder with `manifest.json` directly in it. |
 | The bottom bar disappeared | Refresh the page. |
@@ -256,7 +226,7 @@ choose Inspect, open the Console tab and copy any red lines that mention Taste G
 
 ---
 
-## 8. Costs and privacy
+## 7. Costs and privacy
 
 - **Cost:** you pay TypeSafe directly for Jev. Checking a pin costs about $0.000075 (about 7–8 cents per 1,000 pins). Opening a pin costs a little more because it also looks for photos from the same shoot. Each rule of your own adds a little to each new pin. Pins are never paid for twice: results are saved and re-scored for free when you change your taste.
 - **Spending** shows in the popup and on the settings page.
@@ -264,7 +234,7 @@ choose Inspect, open the Console tab and copy any red lines that mention Taste G
 
 ---
 
-## 9. Update or remove
+## 8. Update or remove
 
 - **Update:** download the new ZIP, replace the files in your folder, then press the reload arrow on Taste Gate in `chrome://extensions` and refresh Pinterest. Your taste, votes and results are kept.
 - **Remove:** press **Remove** on Taste Gate in `chrome://extensions`. This deletes your key, taste and saved results from the browser.

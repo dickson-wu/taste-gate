@@ -21,7 +21,7 @@ function drawTaste() {
 }
 $('copy').addEventListener('click', async () => {
   await navigator.clipboard.writeText(JSON.stringify(settings, null, 2));
-  say('tasteStatus', 'ok', '✓ Copied. Paste it into your AI chat with a prompt from the guide.');
+  say('tasteStatus', 'ok', '✓ Copied. Paste it into your AI chat with the learn-my-taste prompt from the guide.');
 });
 $('showPaste').addEventListener('click', () => { $('pasteBox').hidden = false; $('block').focus(); });
 $('cancel').addEventListener('click', () => { $('pasteBox').hidden = true; $('block').value = ''; say('tasteStatus', '', ''); });
@@ -53,7 +53,7 @@ $('reset').addEventListener('click', () => {
 $('export').addEventListener('click', () => exportVotes((r) => {
   say('exportStatus', r.votes ? 'ok' : 'bad', r.votes
     ? '✓ Exported ' + r.votes + ' votes (and ' + (r.pins - r.votes) + ' other checked pins).'
-    : 'Exported, but you haven\'t voted on any pins yet: vote first so the AI knows what you like.');
+    : 'Exported, but you haven\'t voted yet: vote keep or flag on 40+ pins first, so the AI can learn what you like.');
 }));
 $('guide').addEventListener('click', () => chrome.tabs.create({ url: GUIDE_URL }));
 
