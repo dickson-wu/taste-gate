@@ -268,3 +268,9 @@ choose Inspect, open the Console tab and copy any red lines that mention Taste G
 
 - **Update:** download the new ZIP, replace the files in your folder, then press the reload arrow on Taste Gate in `chrome://extensions` and refresh Pinterest. Your taste, votes and results are kept.
 - **Remove:** press **Remove** on Taste Gate in `chrome://extensions`. This deletes your key, taste and saved results from the browser.
+
+---
+
+## Licence
+
+Free to use, change and share under the [MIT licence](LICENSE).
