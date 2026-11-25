@@ -1,0 +1,9 @@
+# Never commit API keys
+key.txt
+*.key
+.env
+
+# OS clutter
+Thumbs.db
+desktop.ini
+.DS_Store

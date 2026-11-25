@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Taste Gate settings</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="glass.css">
+<style>
+  body { max-width: 640px; margin: 0 auto; padding: 36px 20px 48px; }
+  .card.need { box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.8), 0 10px 30px rgba(0, 45, 12, 0.18); }
+  #pasteBox[hidden] { display: none; }
+</style>
+</head>
+<body class="light">
+  <div class="top"><div><div class="hello">Settings</div><div class="title">Taste <b>Gate</b></div></div></div>
+  <div class="stack">
+
+    <div class="card glass" id="keyCard">
+      <div class="step">Step 1</div>
+      <h2>Your Jev key</h2>
+      <p class="label">Taste Gate looks at images with Jev by TypeSafe (get a key at typesafe.ai). Your key stays in this browser and is only sent to TypeSafe.</p>
+      <div class="btns">
+        <input class="input" type="password" id="key" placeholder="Paste your TypeSafe key" autocomplete="off">
+        <button class="bubble" id="saveKey">Save key</button>
+      </div>
+      <div id="keyStatus"></div>
+    </div>
+
+    <div class="card glass">
+      <div class="step">Step 2</div>
+      <h2>Your taste</h2>
+      <p class="label">This is what Taste Gate checks every pin against. Set it up and change it with an AI chat: the guide has the prompts.</p>
+      <div class="chips" id="chips"></div>
+      <div class="btns">
+        <button class="bubble" id="copy">Copy my taste</button>
+        <button class="ghost" id="showPaste">Paste new taste from AI</button>
+      </div>
+      <div id="pasteBox" hidden>
+        <textarea id="block" spellcheck="false" placeholder="Paste the whole taste block from your AI chat here, including the { and }"></textarea>
+        <div class="btns">
+          <button class="bubble" id="apply">Use this taste</button>
+          <button class="ghost" id="cancel">Cancel</button>
+          <button class="ghost" id="reset">Back to the starting taste</button>
+        </div>
+      </div>
+      <div id="tasteStatus"></div>
+    </div>
+
+    <div class="card glass">
+      <div class="step">Step 3</div>
+      <h2>Make it smarter with AI</h2>
+      <div class="how">
+        <div><span>1</span>On Pinterest, hover the pins it got wrong and press Should keep or Should flag.</div>
+        <div><span>2</span>Export your votes and copy your taste.</div>
+        <div><span>3</span>Give both to Claude or ChatGPT with a prompt from the guide. It asks you a few questions and writes a better taste.</div>
+        <div><span>4</span>Paste the new taste back in Step 2.</div>
+      </div>
+      <div class="btns">
+        <button class="bubble" id="export">Export votes</button>
+        <button class="ghost" id="guide">Open the guide ↗</button>
+      </div>
+      <div id="exportStatus"></div>
+    </div>
+
+    <div class="card glass two">
+      <div><div class="label">Pins checked</div><div class="count" id="pins">0</div></div>
+      <div><div class="label">Spent to date</div><div class="count" id="total">$0.0000</div></div>
+    </div>
+  </div>
+<script src="taste.js"></script>
+<script src="page.js"></script>
+<script src="options.js"></script>
+</body>
+</html>

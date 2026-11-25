@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="glass.css">
+<style>
+  html { width: 340px; overflow-y: auto; max-height: 600px; scrollbar-width: none; } /* Chrome caps popups at 600px */
+  body { width: 340px; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div><div class="hello">Hello there</div><div class="title">Taste <b>Gate</b></div></div>
+    <button class="orb" id="openSettings" title="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button>
+  </div>
+  <div class="stack">
+    <div id="keywarn" class="warn" hidden>No Jev key yet. Open Settings (top right) to add it.</div>
+    <div class="tool glass wide">
+      <div class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="9" cy="9" r="1.8"/><path d="m20 15-4.5-4.5L6 20"/></svg></div>
+      <div><div class="name">Check Pinterest pins</div><div class="where">Against your taste, as you scroll</div></div>
+      <label class="switch"><input type="checkbox" id="enabled"><span></span></label>
+    </div>
+    <div class="card glass two">
+      <div><div class="label">Pins checked</div><div class="count" id="pins">0</div></div>
+      <div><div class="label">Spent to date</div><div class="count" id="total">$0.0000</div></div>
+    </div>
+    <div class="card glass">
+      <div class="label">Your votes</div><div class="count" id="votes">0</div>
+      <div class="dots"><span><i class="g"></i><span id="keeps">0</span> keep</span><span><i class="r"></i><span id="flags">0</span> flag</span></div>
+      <div class="btns"><button class="bubble" id="openPins">Checked pins →</button><button class="ghost" id="export">Export votes</button></div>
+    </div>
+  </div>
+  <div class="note">Jev is billed to your own TypeSafe key.</div>
+<script src="taste.js"></script>
+<script src="page.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
